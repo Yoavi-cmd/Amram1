@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "582984204781",
+    "project_id": "amram1",
+    "storage_bucket": "amram1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582984204781:android:bcab17b96cb13955dc27e4",
+        "android_client_info": {
+          "package_name": "com.example.amram1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb3tExi19Z8nN2Q8LXRfvcYa-REhdDf20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    tools:context=".StudentHomeActivity">
+
+    <TextView
+        android:id="@+id/tvWelcomeMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="שלום, תלמיד!"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"/>
+
+    <Button
+        android:id="@+id/btnRaiseProblem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="לעלות תקלה"
+        android:layout_marginBottom="20dp"
+        android:padding="15dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/btnPermanentTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="תקלת קבע לביצוע"
+        android:padding="15dp"
+        android:textSize="18sp"/>
+
+</LinearLayout>
