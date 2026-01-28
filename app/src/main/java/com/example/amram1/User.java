@@ -51,6 +51,4 @@ public class User {
         this.year = year;
     }
 
-
-
 }

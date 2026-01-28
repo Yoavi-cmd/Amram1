@@ -2,27 +2,28 @@ package com.example.amram1;
 
 public class Problem {
     private String typeP;
+    private String id;
     private int severity;
     private int roomP;
-    private String reporterId; // שיניתי את השם לבהירות
-    private String description; // שדה חדש לתיאור
-    private String imageUrl; // שדה חדש ללינק לתמונה
-    private String status; // סטטוס התקלה (active/fixed)
-    private long timestamp; // זמן הדיווח
+    private String description;
+    private String imageUrl;
+    private String reporterName;
+    private String status;
+    private long timestamp;
 
-    public Problem() {
-    }
+    // Required empty public constructor for Firestore
+    public Problem() {}
 
-
-    public Problem(String typeP, int severity, int roomP, String reporterId, String description, String imageUrl, String status, long timestamp) {
+    public Problem(String typeP, int severity, int roomP, String description, String imageUrl, String reporterName, String status, long timestamp) {
         this.typeP = typeP;
         this.severity = severity;
         this.roomP = roomP;
-        this.reporterId = reporterId;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.reporterName = reporterName;
         this.status = status;
         this.timestamp = timestamp;
+
     }
 
     public String getTypeP() {
@@ -36,45 +37,61 @@ public class Problem {
     public int getSeverity() {
         return severity;
     }
+
     public void setSeverity(int severity) {
         this.severity = severity;
     }
+
     public int getRoomP() {
         return roomP;
     }
+
     public void setRoomP(int roomP) {
         this.roomP = roomP;
     }
 
-    public String getReporterId() {
-        return reporterId;
-    }
-    public void setReporterId(String reporterId) {
-        this.reporterId = reporterId;
-    }
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public String getImageUrl() {
         return imageUrl;
     }
+
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public String getReporterName() {
+        return reporterName;
+    }
+
+    public void setReporterName(String reporterName) {
+        this.reporterName = reporterName;
+    }
+
     public String getStatus() {
         return status;
     }
+
     public void setStatus(String status) {
         this.status = status;
     }
+
     public long getTimestamp() {
         return timestamp;
     }
+
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
+    public String getId() {return id;}
+
+    public void setId(String id) { this.id = id;}
+
 
 }
