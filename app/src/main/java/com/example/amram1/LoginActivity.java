@@ -5,15 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -46,50 +51,45 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginUser(String id) {
-        // חיפוש המסמך באוסף users לפי ה-ID
-        db.collection("users").document(id).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            // המשתמש נמצא! נהפוך אותו לאובייקט User
-                            User user = documentSnapshot.toObject(User.class);
-
-                            if (user != null) {
-                                navigateBasedOnType(user);
-                            }
-                        } else {
-                            // המשתמש לא נמצא ב-Database
-                            Toast.makeText(LoginActivity.this, "משתמש לא קיים, פנה למנהל", Toast.LENGTH_LONG).show();
+        db.collection("users")
+                .whereEqualTo("id", id)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (task.getResult().isEmpty()) {
+                            Toast.makeText(this, "No user found", Toast.LENGTH_SHORT).show();
+                            return;
                         }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(LoginActivity.this, "שגיאה בהתחברות: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            User user = document.toObject(User.class);
+                            navigateBasedOnType(user);
+
+                        }
+                    } else {
+                        Toast.makeText(this,
+                                "Error: " + task.getException().getMessage(),
+                                Toast.LENGTH_LONG).show();
                     }
                 });
     }
 
     private void navigateBasedOnType(User user) {
         Intent intent = null;
-
-        // נקבל את ה-type כ-int (בהתאם למחלקה User)
         int userType = user.getType();
 
         // נשתמש במספרים ב-case labels
         switch (userType) {
-            case 1: // 1 = תלמיד (StudentHomeActivity)
+            case 1: // 1 = תלמיד
                 intent = new Intent(LoginActivity.this, StudentHomeActivity.class);
                 break;
-            case 2: // 2 = מדריך (GuideHomeActivity)
+            case 2: // 2 = מדריך
                 intent = new Intent(LoginActivity.this, GuideHomeActivity.class);
                 break;
-            case 3: // 3 = אב בית (HouseFatherActivity)
+            case 3: // 3 = אב בית
                 intent = new Intent(LoginActivity.this, HouseFatherActivity.class);
                 break;
-            case 4: // 4 = מנהל (ManagerHomeActivity)
+            case 4: // 4 = מנהל
                 intent = new Intent(LoginActivity.this, ManagerHomeActivity.class);
                 break;
             default:
@@ -98,13 +98,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (intent != null) {
-            // מעבירים את המידע על המשתמש לדף הבא (אופציונלי, אך מומלץ)
             intent.putExtra("USER_ID", user.getId());
             intent.putExtra("USER_NAME", user.getName());
             intent.putExtra("USER_YEAR", user.getYear());
 
             startActivity(intent);
-            finish(); // סוגר את דף הכניסה כדי שלא יחזרו אליו בלחיצה על "חזור"
+            finish();
         }
     }
 }

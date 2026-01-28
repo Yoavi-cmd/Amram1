@@ -77,7 +77,6 @@ public class ReportProblemActivity extends AppCompatActivity {
     }
 
     private void setupSpinner() {
-        // You can customize this list
         String[] problemTypes = {"חשמל", "אינסטלציה", "אינטרנט", "ריהוט", "אחר"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, problemTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -105,11 +104,8 @@ public class ReportProblemActivity extends AppCompatActivity {
             etDescription.setError("חובה להזין תיאור");
             return;
         }
-
         int roomNumber = Integer.parseInt(roomNumberStr);
-
         setLoading(true);
-
         if (imageUri != null) {
             uploadImageAndSaveProblem(roomNumber, description, problemType);
         } else {
@@ -118,8 +114,7 @@ public class ReportProblemActivity extends AppCompatActivity {
     }
 
     private void uploadImageAndSaveProblem(int roomNumber, String description, String problemType) {
-        final StorageReference fileReference = storageReference.child(UUID.randomUUID().toString()
-                + "." + getFileExtension(imageUri));
+        final StorageReference fileReference = storageReference.child(UUID.randomUUID().toString() + "." + getFileExtension(imageUri));
 
         fileReference.putFile(imageUri)
                 .continueWithTask(task -> {
@@ -147,12 +142,9 @@ public class ReportProblemActivity extends AppCompatActivity {
 
     private void saveProblem(int roomNumber, String description, String problemType, String imageUrl) {
         long timestamp = System.currentTimeMillis();
-        // Severity can be determined by problem type or another UI element, here it's hardcoded
-        int severity = 1; 
-        String status = "new";
-
+        int severity = 1;
+        String status = "active";
         Problem problem = new Problem(problemType, severity, roomNumber, description, imageUrl, currentUserName, status, timestamp);
-
         db.collection("problems").add(problem)
                 .addOnSuccessListener(documentReference -> {
                     Toast.makeText(ReportProblemActivity.this, "הדיווח נשלח בהצלחה", Toast.LENGTH_SHORT).show();

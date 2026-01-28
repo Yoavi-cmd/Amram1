@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal"
+    tools:context=".HouseFatherActivity">
+
+    <TextView
+        android:id="@+id/tvFatherWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="שלום, אב הבית"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="50dp"/>
+
+    <Button
+        android:id="@+id/btnActiveProblems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🚨 תקלות פעילות"
+        android:layout_marginBottom="20dp"
+        android:padding="15dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/btnCreatePermanentTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📅 העלאת תקלת קבע"
+        android:layout_marginBottom="20dp"
+        android:padding="15dp"
+        android:textSize="18sp"/>
+
+    <Button
+        android:id="@+id/btnFixedProblems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="✅ תקלות שתוקנו"
+        android:padding="15dp"
+        android:textSize="18sp"/>
+
+</LinearLayout>

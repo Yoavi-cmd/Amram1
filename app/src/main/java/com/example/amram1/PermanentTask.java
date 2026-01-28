@@ -1,3 +1,5 @@
+package com.example.amram1;
+
 public class PermanentTask {
     private String id; // מזהה המטלה (מה-Firestore)
     private String title; // כותרת (למשל: "ניקוי פילטרים")

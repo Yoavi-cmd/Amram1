@@ -2,6 +2,7 @@ package com.example.amram1;
 
 public class Problem {
     private String typeP;
+    private String id;
     private int severity;
     private int roomP;
     private String description;
@@ -22,9 +23,9 @@ public class Problem {
         this.reporterName = reporterName;
         this.status = status;
         this.timestamp = timestamp;
+
     }
 
-    // Getters and setters for all fields
     public String getTypeP() {
         return typeP;
     }
@@ -88,4 +89,9 @@ public class Problem {
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
+    public String getId() {return id;}
+
+    public void setId(String id) { this.id = id;}
+
+
 }

@@ -1,4 +1,4 @@
-package com.example.amram1; // ודא שזה שם החבילה שלך
+package com.example.amram1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,9 +10,7 @@ import android.widget.TextView;
 public class ManagerHomeActivity extends AppCompatActivity {
 
     private TextView tvWelcomeMessage;
-    private Button btnAddStudent;
-
-    // אופציונלי: משתנים לשמירת שם המנהל
+    private Button btnAddStudent, btnActiveProblems, btnRaiseProblem, btnFixedProblems;
     private String currentUserName;
 
     @Override
@@ -22,29 +20,55 @@ public class ManagerHomeActivity extends AppCompatActivity {
 
         tvWelcomeMessage = findViewById(R.id.tvManagerWelcomeMessage);
         btnAddStudent = findViewById(R.id.btnAddStudent);
-        // יש לקשר גם את הכפתורים האחרים כאן (אפשרי לעשות זאת בהמשך)
+        btnActiveProblems = findViewById(R.id.btnManagerActiveProblems);
+        btnRaiseProblem = findViewById(R.id.btnManagerRaiseProblem);
+        btnFixedProblems = findViewById(R.id.btnManagerFixedProblems);
 
-        // 1. קבלת פרטי המנהל מדף הכניסה
         Intent intent = getIntent();
         currentUserName = intent.getStringExtra("USER_NAME");
 
-        // הצגת הודעת קבלת פנים מותאמת אישית
         if (currentUserName != null) {
             tvWelcomeMessage.setText("שלום מנהל, " + currentUserName);
         } else {
             tvWelcomeMessage.setText("שלום מנהל!");
         }
 
-        // 2. הגדרת כפתור "להוסיף תלמיד" לניתוב למסך שכבר בנינו
+        // כפתור הוספת תלמיד
         btnAddStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // המעבר אל AddStudentActivity
                 Intent addIntent = new Intent(ManagerHomeActivity.this, AddStudentActivity.class);
                 startActivity(addIntent);
             }
         });
 
-        // נותב למסכים אחרים ייבנה כשתממש אותם...
+        // כפתור תקלות פעילות
+        btnActiveProblems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManagerHomeActivity.this, ActiveProblemsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        // כפתור העלאת תקלה
+        btnRaiseProblem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManagerHomeActivity.this, ReportProblemActivity.class);
+                // במקרה של מנהל, אפשר להעביר פרטים כלליים או לקבל אותם מה-Intent המקורי
+                intent.putExtra("USER_NAME", currentUserName);
+                startActivity(intent);
+            }
+        });
+
+        // כפתור תקלות שתוקנו
+        btnFixedProblems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ManagerHomeActivity.this, FixedProblemsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

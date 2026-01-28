@@ -59,11 +59,9 @@ public class StudentHomeActivity extends AppCompatActivity {
             }
         });
 
-        // 4. הגדרת כפתור "תקלת קבע לביצוע"
         btnPermanentTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // מעבר למסך תקלות הקבע
                 Intent taskIntent = new Intent(StudentHomeActivity.this, PermanentTasksActivity.class);
                 taskIntent.putExtra("USER_ID", currentUserId);
                 startActivity(taskIntent);
