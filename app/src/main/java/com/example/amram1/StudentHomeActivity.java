@@ -1,6 +1,7 @@
 package com.example.amram1; // ודא שזה שם החבילה שלך
 
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
@@ -13,6 +14,8 @@ public class StudentHomeActivity extends AppCompatActivity {
     private TextView tvWelcomeMessage;
     private Button btnRaiseProblem;
     private Button btnPermanentTask;
+    private Button btnMyProblems;
+    private Button btnLogout;
 
     // פרטי המשתמש שנשמרו מה-LoginActivity
     private String currentUserId;
@@ -27,6 +30,8 @@ public class StudentHomeActivity extends AppCompatActivity {
         tvWelcomeMessage = findViewById(R.id.tvWelcomeMessage);
         btnRaiseProblem = findViewById(R.id.btnRaiseProblem);
         btnPermanentTask = findViewById(R.id.btnPermanentTask);
+        btnMyProblems = findViewById(R.id.btnMyProblems);
+        btnLogout = findViewById(R.id.btnLogout);
 
         // 1. קבלת פרטי המשתמש שנשלחו מדף הכניסה
         Intent intent = getIntent();
@@ -65,6 +70,27 @@ public class StudentHomeActivity extends AppCompatActivity {
                 Intent taskIntent = new Intent(StudentHomeActivity.this, PermanentTasksActivity.class);
                 taskIntent.putExtra("USER_ID", currentUserId);
                 startActivity(taskIntent);
+            }
+        });
+
+        btnMyProblems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(StudentHomeActivity.this, MyProblemsActivity.class);
+                myIntent.putExtra("USER_NAME", currentUserName);
+                startActivity(myIntent);
+            }
+        });
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+                prefs.edit().clear().apply();
+                Intent intent = new Intent(StudentHomeActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
         });
     }

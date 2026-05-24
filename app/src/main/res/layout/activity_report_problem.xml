@@ -1,81 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@drawable/pic_bg"
     tools:context=".ReportProblemActivity">
 
-    <EditText
-        android:id="@+id/etRoomNumber"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="מספר חדר"
-        android:inputType="number"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="vertical"
+        android:padding="24dp">
 
-    <Spinner
-        android:id="@+id/spinnerProblemType"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/etRoomNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="דיווח תקלה"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"/>
 
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="תיאור התקלה"
-        android:gravity="top"
-        android:minLines="3"
-        app:layout_constraintTop_toBottomOf="@id/spinnerProblemType"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="מספר חדר"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp"/>
 
-    <Button
-        android:id="@+id/btnPickImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="בחר תמונה"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDescription" />
+        <EditText
+            android:id="@+id/etRoomNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="הכנס מספר חדר"
+            android:inputType="number"
+            android:background="@drawable/edit_text_bg"
+            android:layout_marginBottom="16dp"/>
 
-    <ImageView
-        android:id="@+id/ivProblemImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="8dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/btnPickImage"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:src="@tools:sample/avatars" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="סוג תקלה"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp"/>
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="שלח דיווח"
-        app:layout_constraintTop_toBottomOf="@id/ivProblemImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <Spinner
+            android:id="@+id/spinnerProblemType"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/edit_text_bg"
+            android:layout_marginBottom="16dp"/>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="תיאור התקלה"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="4dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="תאר את התקלה..."
+            android:gravity="top"
+            android:minLines="3"
+            android:background="@drawable/edit_text_bg"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:id="@+id/btnPickImage"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="צרף תמונה"
+            android:textSize="15sp"
+            android:textColor="@color/primary"
+            android:backgroundTint="@color/primary_light"/>
+
+        <ImageView
+            android:id="@+id/ivProblemImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="12dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            tools:src="@tools:sample/avatars"/>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:text="שלח דיווח"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_success"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</ScrollView>

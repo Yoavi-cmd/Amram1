@@ -1,10 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/pic_bg"
     tools:context=".GuideHomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_gravity="start|top"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/btn_logout"
+        android:text="התנתק"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:minWidth="0dp"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="60dp">
+
+        <TextView
+            android:id="@+id/tvGuideWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="שלום, מדריך!"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary_dark"
+            android:layout_marginBottom="40dp"/>
+
+        <Button
+            android:id="@+id/btnGuideActiveProblems"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="תקלות פעילות"
+            android:layout_marginBottom="16dp"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_primary"/>
+
+        <Button
+            android:id="@+id/btnGuideRaiseProblem"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="העלאת תקלה"
+            android:layout_marginBottom="16dp"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_primary"/>
+
+        <Button
+            android:id="@+id/btnGuideFixedProblems"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="תקלות שטופלו"
+            android:textSize="17sp"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_primary"/>
+
+    </LinearLayout>
+
+</FrameLayout>

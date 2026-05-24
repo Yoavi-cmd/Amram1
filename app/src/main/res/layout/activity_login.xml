@@ -6,36 +6,44 @@
     android:orientation="vertical"
     android:padding="30dp"
     android:gravity="center"
+    android:background="@drawable/pic_bg"
     tools:context=".LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ברוכים הבאים לעמרם"
-        android:textSize="28sp"
+        android:text="עמרם"
+        android:textSize="40sp"
         android:textStyle="bold"
-        android:layout_marginBottom="40dp"/>
+        android:textColor="@color/primary"
+        android:layout_marginBottom="8dp"/>
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="תעודת זהות:"
-        android:textSize="16sp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="50dp"
+        android:text="מערכת ניהול תקלות בפנימייה"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/etLoginId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="הכנס ת.ז."
+        android:hint="הכנס תעודת זהות"
         android:inputType="number"
-        android:layout_marginBottom="20dp"/>
+        android:background="@drawable/edit_text_bg"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="התחבר"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_primary"/>
 
 </LinearLayout>

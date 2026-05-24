@@ -4,42 +4,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
+    android:padding="24dp"
     android:gravity="center_horizontal"
+    android:background="@drawable/pic_bg"
     tools:context=".AddStudentActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="הוספת תלמיד"
-        android:textSize="24sp"
+        android:text="הוספת משתמש"
+        android:textSize="26sp"
         android:textStyle="bold"
+        android:textColor="@color/primary_dark"
         android:layout_marginBottom="30dp"/>
 
     <EditText
         android:id="@+id/etStudentName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="שם:" />
+        android:hint="שם מלא"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginBottom="14dp"/>
 
     <EditText
         android:id="@+id/etStudentId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="תעודת זהות:"
-        android:inputType="number" />
+        android:hint="תעודת זהות"
+        android:inputType="number"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginBottom="14dp"/>
 
     <EditText
         android:id="@+id/etStudentYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="שכבה:" />
+        android:hint="שכבה"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginBottom="14dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerUserType"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text_bg"
+        android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/btnAddStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="הוספה" />
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="הוספה"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_success"/>
 
 </LinearLayout>
