@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/pic_bg"
+    tools:context=".ManageUsersActivity">
+
+    <!-- כותרת המסך -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ניהול משתמשים"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_dark"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- שדה חיפוש משתמשים -->
+    <EditText
+        android:id="@+id/etSearchUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="חפש לפי שם או ת.ז..."
+        android:inputType="text"
+        android:background="@drawable/edit_text_bg"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="8dp"
+        android:padding="12dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- מונה משתמשים -->
+    <TextView
+        android:id="@+id/tvUserCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="טוען..."
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- רשימת המשתמשים -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUsers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
